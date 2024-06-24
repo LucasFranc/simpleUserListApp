@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SimpleUserListApplication</string>
+    <string name="error_occurred">ERROR OCCURRED</string>
+    <string name="unexpected_error_occurred">UNEXPECTED ERROR OCCURRED</string>
+    <string name="not_found_name">Not found Name!</string>
+    <string name="not_found_e_mail">Not found E-mail!</string>
+</resources>
