@@ -67,6 +67,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
+    // koin Tests
+    testImplementation(libs.insert.koin.koin.test)
+    // cororutines testing
+    testImplementation(libs.kotlinx.coroutines.test)
+    // mockk to mock dependencies
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

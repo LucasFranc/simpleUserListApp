@@ -16,7 +16,7 @@ class SimpleNameViewModel(private val usersUseCase: UsersUseCase) : ViewModel() 
 
     private val _userState = mutableStateOf(UserState())
     val userState: State<UserState> = _userState
-    private val delayTime = 1000L
+    val delayTime = 1000L
 
     init {
         viewModelScope.launch {
