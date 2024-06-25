@@ -38,7 +38,7 @@ fun SimpleNameListScreen(modifier: Modifier = Modifier) {
             }
 
             viewState.error != null -> {
-                Text(stringResource(R.string.error_occurred))
+                ErrorScreen(stringResource(R.string.error_occurred))
             }
 
             viewState.users != null -> {
@@ -46,17 +46,24 @@ fun SimpleNameListScreen(modifier: Modifier = Modifier) {
             }
 
             else -> {
-                Text(stringResource(R.string.unexpected_error_occurred))
+                ErrorScreen(stringResource(R.string.unexpected_error_occurred))
             }
         }
     }
 }
 
 @Composable
+private fun ErrorScreen(error : String) {
+    Text(error)
+}
+
+@Composable
 fun CategoryScreen(users: List<User>?) {
-    LazyVerticalGrid(GridCells.Fixed(1), modifier = Modifier.fillMaxSize()) {
-        items(users!!) { user ->
-            UserItem(user = user)
+    users?.let {
+        LazyVerticalGrid(GridCells.Fixed(1), modifier = Modifier.fillMaxSize()) {
+            items(it) { user ->
+                UserItem(user = user)
+            }
         }
     }
 }

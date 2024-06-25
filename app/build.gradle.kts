@@ -69,7 +69,7 @@ dependencies {
     testImplementation(libs.junit)
     // koin Tests
     testImplementation(libs.insert.koin.koin.test)
-    // cororutines testing
+    // coroutines testing
     testImplementation(libs.kotlinx.coroutines.test)
     // mockk to mock dependencies
     testImplementation(libs.mockk)

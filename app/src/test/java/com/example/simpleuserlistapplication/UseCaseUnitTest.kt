@@ -3,14 +3,12 @@ package com.example.simpleuserlistapplication
 import com.example.simpleuserlistapplication.data.UsersUseCase
 import com.example.simpleuserlistapplication.model.User
 import com.example.simpleuserlistapplication.presentation.SimpleNameViewModel
-import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.test.runTest
-import org.junit.Test
+import org.junit.Assert.assertFalse
 import org.junit.Before
+import org.junit.Test
 import org.junit.Rule
-import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class ExampleUnitTest {
 
@@ -26,15 +24,24 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun testImplementation(): Unit = runTest {
-        coEvery { useCase.getUsers() } returns mockListUsers()
-        delay(viewModel.delayTime) // delay to match the delay in the viewModel for the loading to appears :)
-        assertEquals("Lucas", viewModel.userState.value.users!![0].name)
+    fun `test regex Email Success`() {
+       assertTrue(viewModel.validateResponseEmail(mockListUsers()))
+    }
+
+    @Test
+    fun `test regex Email Fail`() {
+        assertFalse(viewModel.validateResponseEmail(mockErrorListUsers()))
     }
 }
 
 fun mockListUsers() : List<User> {
     val userTest1 = User("Lucas", "lucas@lucas.com")
     val userTest2 = User("Franco", "franco@franco.com")
+    return listOf(userTest1,userTest2)
+}
+
+fun mockErrorListUsers() : List<User> {
+    val userTest1 = User("Lucas", "lucaslucascom")
+    val userTest2 = User("Franco", "francofrancocom")
     return listOf(userTest1,userTest2)
 }
