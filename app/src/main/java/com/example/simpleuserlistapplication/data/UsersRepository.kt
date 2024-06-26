@@ -2,9 +2,9 @@ package com.example.simpleuserlistapplication.data
 
 import com.example.simpleuserlistapplication.model.User
 
-class UsersUseCase (private val usersRepository: UsersRepository) {
+class UsersRepository (private val usersService: UsersService) {
 
     suspend fun getUsers(): List<User> {
-         return usersRepository.getUsers()
+         return usersService.getUsers()
     }
 }
